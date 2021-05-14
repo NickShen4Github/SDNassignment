@@ -35,6 +35,8 @@ class ATopo(Topo):
 
         "Create server room topo."
         sw0 = self.addSwitch('sw0')
+        "Create simulated internet."
+        sv0= self.addHost('sv0',ip='192.168.100.100/24')
         "Create SL server."
         sv5= self.addHost('sv5',ip='192.168.100.5/24')
         "Create 4 R&D server."
@@ -43,6 +45,7 @@ class ATopo(Topo):
         sv3= self.addHost('sv3',ip='192.168.100.3/24')
         sv4= self.addHost('sv4',ip='192.168.100.4/24')
         "Create links."
+        self.addLink(sv0,sw0,1,10)
         self.addLink(sv1,sw0,1,1)
         self.addLink(sv2,sw0,1,2)
         self.addLink(sv3,sw0,1,3)
@@ -63,8 +66,8 @@ class ATopo(Topo):
  
         "Create 2 seminar topo."
         sw1_2_2 = self.addSwitch('sw1_2_2')
-        sw1_2_2_1 = self.addSwitch('sw1_2_1_1')
-        sw1_2_2_2 = self.addSwitch('sw1_2_1_2')
+        sw1_2_2_1 = self.addSwitch('sw1_2_2_1')
+        sw1_2_2_2 = self.addSwitch('sw1_2_2_2')
         self.addLink('sw1_2_2', 'sw1_2_2_1', 2, 1)
         self.addLink('sw1_2_2', 'sw1_2_2_2', 3, 1)
 
